@@ -1,11 +1,7 @@
 console.log('Memory Game Scripts Connected!');
 
 
-// Click .card reveals image - capture each 'click' and add to counter
-// Only two images can be visable at any one time
-// Clicking on two matching images are a 'match' - images should remain face up
-// Non-matching pairs should remain visable for 1500 before hiding again
-// Store lowest storing game in local storage - retain 'best score' 
+
 
 
 const resetButton = document.querySelector('#reset');
