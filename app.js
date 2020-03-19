@@ -4,7 +4,7 @@ console.log('New Memory Game Scripts connected!')
 // * Complete * Only two images can be visable at any one time
 // * Complete * Clicking on two matching images are a 'match' - images should remain face up
 // * Complete * Non-matching pairs should remain visable for 1500 before hiding again
-// Store lowest storing game in local storage - retain 'best score' 
+// * Complete * Store lowest storing game in local storage - retain 'best score' 
 
 
 const cards = document.querySelectorAll('.memory-card');
@@ -18,6 +18,11 @@ let firstCard;
 let secondCard;
 let cardCounter = 0;
 let gameOver = 0;
+let lowScore = localStorage.getItem('low-score'); // Track best score in local storage
+
+if (lowScore) {
+  document.getElementById('best-score').innerText = lowScore; // Display current best score
+}
 
 // Reset Game Board - Refresh page
 resetButton.addEventListener('click', function() {
@@ -43,62 +48,71 @@ function flipCard() {
     secondCard = this;
     cardCounter++; // increment counter
     currentScore.textContent = cardCounter; // Display current clicks
-    console.log(cardCounter); // log counter
+    console.log(`cardCounter var is: ${cardCounter}`); // log counter
     checkForMatch();
 }
 
 function checkForMatch() {
-  // do cards match? ********************
+  // Does the card pair match? ********************
   let matchedCards = firstCard.dataset.gif === secondCard.dataset.gif;
   matchedCards ? disableCards() : unflipCards();
-
 }
 
 function disableCards() {
-    // it's a match
+    // Card pair matched!
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
-    console.log('Card pair matched!')
+    console.log('Card pair matched!') // logging
     gameOver++;
-    console.log(`Game Over Counter is: ${gameOver}`);
+    console.log(`Game Over Counter is: ${gameOver}`); // logging
+    console.log(`Current Low Score is: ${lowScore}`); // logging
     if (gameOver === 6){
       setTimeout(function() { endGame(); }, 500);
     } 
     resetBoard();
+
 }
 
 function unflipCards() {
   lockBoard = true;
-  // not a match
+  // Not a match
   console.log('Card pair not a match.')
   setTimeout(() => {
     firstCard.classList.remove('flip');
     secondCard.classList.remove('flip');
-
     resetBoard();
   }, 1500)
 }
 
 function resetBoard () {
-  [hasFlippedCard, lockBoard] = [false, false];
-  [firstCard, secondCard] = [null, null];
+  hasFlippedCard = false;
+  lockBoard = false;
+  firstCard = null;
+  secondCard = null;
 }
 
 
-// Game Winner 
-function endGame(){
+function endGame() {
+  if ((lowScore > currentScore.innerText) || !lowScore) {
+      localStorage.setItem("low-score", currentScore.innerText);
+      bestScore.innerText = currentScore.innerText;
+      alert(`You've got the new best score of ${cardCounter}`);
+  } else{
     alert(`You won in ${cardCounter} clicks!`)
-}
+  }
 
+}
 
 
 // IIFE (Immediately Invoked Function Expression)
 (function shuffle(){
   cards.forEach(card => {
     let randomPos = Math.floor(Math.random() * 12) // shuffle 12 card deck
-    card.style.order = randomPos;
+    card.style.order = randomPos; // randomize based on flexbox property 'order' - assign random order to each card  
   });
 })();
 
 cards.forEach(card => card.addEventListener('click', flipCard));
 
+// Utility *********************
+// localStorage.clear();
