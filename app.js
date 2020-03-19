@@ -1,5 +1,5 @@
 console.log('New Memory Game Scripts connected!')
-
+// ********** Requirements *******************************************************
 // * Complete * Click .card reveals image - capture each 'click' and add to counter
 // * Complete * Only two images can be visable at any one time
 // * Complete * Clicking on two matching images are a 'match' - images should remain face up
@@ -66,7 +66,7 @@ function disableCards() {
     gameOver++;
     console.log(`Game Over Counter is: ${gameOver}`); // logging
     console.log(`Current Low Score is: ${lowScore}`); // logging
-    if (gameOver === 6){
+    if (gameOver === 10){ // 10 for 20 -- 8 for 16 card deck (original 6 for 12)
       setTimeout(function() { endGame(); }, 500);
     } 
     resetBoard();
@@ -107,7 +107,7 @@ function endGame() {
 // IIFE (Immediately Invoked Function Expression)
 (function shuffle(){
   cards.forEach(card => {
-    let randomPos = Math.floor(Math.random() * 12) // shuffle 12 card deck
+    let randomPos = Math.floor(Math.random() * 20) // shuffle 12 (original) card deck
     card.style.order = randomPos; // randomize based on flexbox property 'order' - assign random order to each card  
   });
 })();

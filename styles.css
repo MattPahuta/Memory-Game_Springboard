@@ -5,56 +5,83 @@
 }
 
 body {
-  height: 100vh;
-  font-family: 'Roboto', sans-serif;
-  background: #355C7D;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #C06C84, #6C5B7B, #355C7D);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #C06C84, #6C5B7B, #355C7D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  font-family: 'Ubuntu', sans-serif;
+  background-image: url('imgs/enterprise-tos.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.menu-container {
+  background-color: #a71313;
+  padding: 16px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.menu {
+  width: 900px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.menu div {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
 }
 
 .header-container {
-  margin-top: 25px;
-  margin-bottom: 10px;
-  padding: 5px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  width: 900px;
+  height: 150px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 }
 
 h1 {
-  font-size: 3.5rem;
-}
-
-#game-controls {
-  margin-top: 25px;
-}
-
-#game-controls h3 {
-  /* padding: 5px 0; */
-  line-height: 1.8;
+  font-size: 3rem;
+  color: #fff;
 }
 
 #reset-btn {
-  margin-top: 20px;
   padding: 10px 10px;
   border-radius: 5px;
+  color: #fff;
   background-color: #a71313;
+  border-style: none;
+  font-family: 'Roboto', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
 }
 
-.memory-game {
-  width: 840px;
-  height: 740px;
-  margin: auto;
+#reset-btn:hover {
+  cursor: pointer;
+}
+
+.game-board-container {
   display: flex;
+  justify-content: center;
+}
+
+.game-board {
+  width: 850px;
+  display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  perspective: 1000px;
+  flex-direction: row;
+  align-items: center;
+  perspective: 350px;
 }
 
 .memory-card {
-  width: calc(25% - 10px);
-  height: calc(33.333% - 10px);
-  position: relative;
+  width: 150px;
+  height: 175px;
   margin: 5px;
   transform: scale(1);
   transform-style: preserve-3d;
@@ -66,6 +93,10 @@ h1 {
   transition: transform .2s
 }
 
+.memory-card:hover {
+  cursor: pointer;
+}
+
 .memory-card.flip {
   transform: rotateY(180deg)
 }
@@ -74,7 +105,7 @@ h1 {
 .back-face {
   width: 100%;
   height: 100%;
-  padding: 12px;
+  padding: 5px;
   position: absolute;
   border-radius: 5px;
   backface-visibility: hidden;
@@ -86,10 +117,6 @@ h1 {
 
 .front-face {
   transform: rotateY(180deg);
-  background-color: #2b53a7;
+  background-color: #a71313;
 }
 
-
-img {
-  /* width: 100%; */
-}
