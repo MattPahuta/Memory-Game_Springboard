@@ -120,3 +120,52 @@ h1 {
   background-color: #a71313;
 }
 
+/* ***************************** Game Winning Modal  ****************************** */
+
+.modal-container {
+  display: none; 
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #c1c730;  /* fallback for old browsers */
+  background: linear-gradient(to left, #2b53a7, #a71313);
+  border-radius: 5px;
+  z-index: 1000;
+  width: 590px;
+  max-width: 75%;
+  height: 240px;
+  max-height: 50%;
+  padding: 25px 30px;
+  overflow: auto;
+}
+
+/* Modal Content */
+.modal-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff;
+  margin: 0 auto;
+  padding: 20px;
+  border: 3px solid #2b53a7;
+  border-radius: 5px;
+  width: 90%;
+  height: 50%;
+  color: #2b53a7;
+}
+
+/* Modal Close Button */
+.close {
+  color: #2b53a7;
+  margin-right: 10px;
+}
+
+.close:hover,
+.close:focus {
+  color: #a71313;
+  text-decoration: none;
+  cursor: pointer;
+}
+

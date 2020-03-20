@@ -20,6 +20,14 @@ let cardCounter = 0;
 let gameOver = 0;
 let lowScore = localStorage.getItem('low-score'); // Track best score in local storage
 
+// Modal elemetents ********************
+// Get the modal
+const modal = document.getElementById("myModal");
+// Get the <span> element that closes the modal
+const span = document.getElementsByClassName("close")[0];
+
+
+
 if (lowScore) {
   document.getElementById('best-score').innerText = lowScore; // Display current best score
 }
@@ -98,10 +106,13 @@ function endGame() {
       bestScore.innerText = currentScore.innerText;
       alert(`You've got the new best score of ${cardCounter}`);
   } else{
-    alert(`You won in ${cardCounter} clicks!`)
+    // alert(`You won in ${cardCounter} clicks!`)
+    document.getElementById("modal-click-counter").innerText = cardCounter;
+    modal.style.display = "flex";
   }
 
 }
+
 
 
 // IIFE (Immediately Invoked Function Expression)
@@ -116,3 +127,12 @@ cards.forEach(card => card.addEventListener('click', flipCard));
 
 // Utility *********************
 // localStorage.clear();
+
+
+// *********** Game Winning Modal ******************************** 
+
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}

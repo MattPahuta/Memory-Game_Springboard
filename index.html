@@ -6,13 +6,14 @@
   <title>Star Trek Memory Game</title>
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/59acfc2056.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <!-- Menu - current and top scores -->
   <div class="menu-container">
     <div class="menu">
-      <div>Current Score: <span id="current-score">0</span></div>
+      <div>Your Score: <span id="current-score">0</span></div>
       <div>Top Score: <span id="best-score">0</span></div>
     </div>
   </div>
@@ -107,6 +108,17 @@
         <img class="back-face"src="imgs/sf-emblem.png" alt="">
       </div>
     </div>
+  </div>
+
+  <!-- Game Winning Modal-->
+  <div id="myModal" class="modal-container">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close"><i class="far fa-window-close fa-2x"></i></span>
+      <h4>Congratulations! You solved the game in <span id="modal-click-counter"></span> clicks.</h4>
+    </div>
+
   </div>
 
   <script src="app.js"></script>
